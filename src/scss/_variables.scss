@@ -1,0 +1,20 @@
+:root {
+    --backgroundPage: #10161f;
+    --backgroundContent: #1d2633;
+    --backgroundContentSecond: #fff;
+    --textPrimary: #fff;
+    --textInvert: #000;
+    --textSecondary: #8994a3;
+    --accentBlue: #45aef5;
+    --borderPrimary: #242e3b;
+    --blueGradient: linear-gradient(0deg, #1ac9ff, #0098ea);
+    --blueRadialGradient: radial-gradient(
+        circle,
+        #0098ea 0%,
+        #1ac9ff 30%,
+        rgba(26, 201, 255, 0.3) 50%,
+        hsla(0, 0%, 100%, 0) 100%
+    );
+    --grayGradient: linear-gradient(90deg, transparent, #1d2633 50%, transparent);
+    --contentGradient: linear-gradient(90deg, #1d2633, transparent 50%, #1d2633);
+}

@@ -1,0 +1,15 @@
+#top-fade {
+    position: absolute;
+    pointer-events: none;
+    display: flex;
+    flex-direction: row;
+    aspect-ratio: 1 / 1;
+    width: 200%;
+    height: auto;
+    border-radius: 100%;
+    background: var(--blueRadialGradient);
+    filter: blur(50px);
+    top: 0;
+    z-index: 0;
+    transform: translateY(-80%);
+}

@@ -1,0 +1,25 @@
+{
+  "name": "tonkeeper-batter-solid",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@solid-primitives/i18n": "^2.1.1",
+    "@solidjs/router": "^0.13.6",
+    "@types/pako": "^2.0.3",
+    "lottie-web": "^5.12.2",
+    "pako": "^2.1.0",
+    "solid-js": "^1.8.17"
+  },
+  "devDependencies": {
+    "sass": "^1.77.6",
+    "typescript": "^5.5.2",
+    "vite": "^5.3.1",
+    "vite-plugin-solid": "^2.10.2"
+  }
+}
