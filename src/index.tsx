@@ -1,5 +1,5 @@
 import './app.scss';
-import './rlottie-wasm.js'
+import './rlottie/rlottie';
 
 import { Route, Router } from '@solidjs/router';
 

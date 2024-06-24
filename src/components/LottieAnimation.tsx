@@ -12,11 +12,11 @@ const LottieAnimation = ({
     tgs = false,
     width = 320,
     height = 320,
-    speed = 0.5,
+    speed = 1,
     loop = true
 }: LottieAnimationProps) => {
     return (
-        <div data-lottie={lottie} data-tgs={tgs} data-speed={speed} data-loop={loop}>
+        <div data-lottie={lottie} data-tgs={tgs} data-speed={speed} data-loop={loop} data-lottie-id={Math.random().toString(36).substring(2, 8)}>
             <canvas width={width} height={height}></canvas>
         </div>
     );

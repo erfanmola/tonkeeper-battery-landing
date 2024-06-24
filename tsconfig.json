@@ -7,5 +7,10 @@
     {
       "path": "./tsconfig.node.json"
     }
-  ]
+  ],
+  "compilerOptions": {
+    "lib": [
+      "WebWorker"
+    ]
+  }
 }
