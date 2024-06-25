@@ -10,6 +10,30 @@
     background: var(--blueRadialGradient);
     filter: blur(50px);
     top: 0;
-    z-index: 0;
+    z-index: -1;
     transform: translateY(-80%);
+}
+
+#main-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    padding-top: 2rem;
+
+    > nav {
+        > ul {
+            display: flex;
+            gap: 3rem;
+
+            > li {
+                opacity: 0.75;
+                transition: opacity 0.25s;
+
+                &:hover {
+                    opacity: 0.875;
+                }
+            }
+        }
+    }
 }

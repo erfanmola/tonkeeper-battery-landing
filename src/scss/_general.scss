@@ -48,3 +48,13 @@ body {
     width: 100%;
     max-width: 1096px;
 }
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    color: var(--textPrimary);
+    text-decoration: none;
+}
