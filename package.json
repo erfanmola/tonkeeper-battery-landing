@@ -11,11 +11,14 @@
   "dependencies": {
     "@solid-primitives/i18n": "^2.1.1",
     "@solidjs/router": "^0.13.6",
+    "animate.css": "^4.1.1",
     "lottie-web": "^5.12.2",
     "pako": "^2.1.0",
+    "solid-icons": "^1.1.0",
     "solid-js": "^1.8.17"
   },
   "devDependencies": {
+    "@mojojoejo/vite-plugin-purgecss": "^1.1.0",
     "@types/node": "^20.14.8",
     "@types/pako": "^2.0.3",
     "sass": "^1.77.6",
