@@ -1,0 +1,71 @@
+.tk-select {
+    position: relative;
+    color: var(--textInvert);
+    --animate-duration: 500ms;
+
+    &:hover,
+    &:active {
+        .tk-select-list-container {
+            display: block;
+        }
+    }
+
+    .tk-select-control {
+        outline: none;
+        border: none;
+        background-color: var(--backgroundContentSecond);
+        border-radius: 2rem;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+    }
+
+    .tk-select-placeholder {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+        user-select: none;
+
+        > span {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.325rem;
+        }
+    }
+
+    .tk-select-list-container {
+        display: none;
+        position: absolute;
+        top: 100%;
+        padding-top: 0.5rem;
+    }
+
+    .tk-select-list {
+        display: flex;
+        width: 100%;
+        height: 200px;
+        width: 200px;
+        color: var(--textPrimary);
+        background-color: var(--backgroundContent);
+        border-radius: 0.5rem;
+        padding: 0.5rem 0;
+    }
+
+    .tk-select-option {
+        background-color: transparent;
+        font-size: 1.125rem;
+        display: flex;
+        align-items: center;
+        padding: 0.625rem 1rem;
+
+        &:hover {
+            opacity: 0.75;
+        }
+
+        &[data-focused="true"] {
+            background-color: var(--backgroundContentSecond);
+            color: var(--textInvert);
+        }
+    }
+}

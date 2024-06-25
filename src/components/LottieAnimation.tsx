@@ -7,6 +7,7 @@ interface LottieAnimationProps {
     loop?: boolean;
 };
 
+// Hint: This component is not reactive due to destructuring, nor does it need to be
 const LottieAnimation = ({
     lottie,
     tgs = false,
