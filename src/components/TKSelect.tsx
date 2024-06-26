@@ -1,9 +1,8 @@
 import './TKSelect.scss';
 
-import { FaSolidChevronDown } from "solid-icons/fa";
-import { JSX } from "solid-js";
+import { For, JSX } from "solid-js";
 
-// @ts-ignore
+import { FaSolidChevronDown } from "solid-icons/fa";
 
 interface TKSelectProps {
     items: { [key: string]: string };
@@ -28,7 +27,13 @@ const TKSelect = (props: TKSelectProps) => (
 
         <div class='tk-select-list-container animate__animated animate__fadeInUp'>
             <ul class='tk-select-list'>
-
+                <For each={Object.entries(props.items)}>
+                    {([key, label]) =>
+                        <li class='tk-select-option' classList={{ active: key == props.value }} onClick={() => props.onChange(key)}>
+                            {label}
+                        </li>
+                    }
+                </For>
             </ul>
         </div>
     </div>

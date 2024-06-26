@@ -6,10 +6,27 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-html,
-body {
+html:dir(ltr),
+body:dir(ltr) {
     font-family:
         Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        Segoe UI,
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        Fira Sans,
+        Droid Sans,
+        Helvetica Neue,
+        sans-serif;
+}
+
+html:dir(rtl),
+body:dir(rtl) {
+    font-family:
+        Vazirmatn,
         -apple-system,
         BlinkMacSystemFont,
         Segoe UI,

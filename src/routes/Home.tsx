@@ -2,8 +2,9 @@ import './Home.scss';
 
 import * as i18n from "@solid-primitives/i18n";
 
-import { Component, createResource, createSignal } from 'solid-js';
-import { Locale, fetchDictionary, localeFlags, locales } from '../locale.ts';
+import { Component, createMemo, createResource, createSignal } from 'solid-js';
+import { Locale, fetchDictionary, localeDirections, localeFlags, locales } from '../locale.ts';
+import { Navigator, useNavigate, useParams } from '@solidjs/router';
 import { TranslationProvider, useTranslation } from "../contexts/TranslationContext.ts";
 
 import { FiGlobe } from 'solid-icons/fi'
@@ -13,17 +14,17 @@ import { dict as en_dict } from "../i18n/en.ts";
 
 console.log(LottieAnimation);
 
-const Header: Component = () => {
-    const { t } = useTranslation();
+const Header = (props: { navigate: Navigator }) => {
+    const { t, locale, setLocale } = useTranslation();
 
-    const localeItems = Object.fromEntries(
+    let localeItems = createMemo(() => Object.fromEntries(
         locales.map(locale => [
             locale.toString(),
             `${localeFlags[locale]} ${t(`locales.${locale}`)}`,
         ])
-    );
+    ));
 
-    const [langSelectValue, setlangSelectValue] = createSignal<string | null>(null, { equals: false });
+    const [langSelectValue, setlangSelectValue] = createSignal<string | null>(locale(), { equals: false });
 
     return (
         <>
@@ -39,11 +40,16 @@ const Header: Component = () => {
                 </nav>
 
                 <TKSelect
-                    items={localeItems}
+                    items={localeItems()}
                     placeholder={t('home.header.language')}
                     icon={<FiGlobe size={22} />}
-                    value={langSelectValue.toString()}
-                    onChange={(value) => { setlangSelectValue(value); }}
+                    value={langSelectValue() || ''}
+                    onChange={(lang) => {
+                        props.navigate(lang == 'en' ? '/' : `/${lang}`, { replace: true });
+                        setLocale(lang);
+                        setlangSelectValue(lang);
+                        document.querySelector('html')?.setAttribute('dir', localeDirections[lang as Locale])
+                    }}
                 />
             </div>
         </>
@@ -51,11 +57,16 @@ const Header: Component = () => {
 };
 
 const Home: Component = () => {
-    const [locale, setLocale] = createSignal<Locale>("en");
+    const { lang } = useParams();
+    const navigate = useNavigate();
+
+    const [locale, setLocale] = createSignal<Locale>((lang ?? 'en') as Locale);
 
     const [dict] = createResource(locale, fetchDictionary, {
         initialValue: i18n.flatten(en_dict),
     });
+
+    document.querySelector('html')?.setAttribute('dir', localeDirections[lang as Locale])
 
     dict();
 
@@ -63,7 +74,7 @@ const Home: Component = () => {
 
     return (
         <TranslationProvider value={{ t, locale, setLocale }}>
-            <Header />
+            <Header navigate={navigate} />
         </TranslationProvider>
     );
 }
