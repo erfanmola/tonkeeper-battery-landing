@@ -75,8 +75,7 @@ const Header = (props: { navigate: Navigator }) => {
                     </div>
 
                     <div style={{ display: 'flex', "flex-direction": 'column' }}>
-                        <LottieAnimation lottie='assets/tgs/ruby-badge.tgs' renderer='svg' />
-                        <LottieAnimation lottie='assets/tgs/ruby-badge.tgs' renderer='canvas' />
+                        <LottieAnimation lottie='assets/tgs/ruby-badge.tgs' />
                     </div>
                 </div>
             </div>

@@ -1,8 +1,6 @@
-import lottie, { RendererType } from 'lottie-web';
+import lottie, { RendererType } from 'lottie-web/build/player/lottie_light';
 
 import { inflate } from 'pako';
-
-console.log(lottie, inflate);
 
 window.addEventListener('DOMContentLoaded', () => {
 
@@ -21,7 +19,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
             file = JSON.parse(file);
 
-            lottie.loadAnimation({
+            const animation = lottie.loadAnimation({
                 container: lottieContainer,
                 renderer: lottieContainer.getAttribute('data-renderer')! as RendererType,
                 loop: lottieContainer.getAttribute('data-loop') == 'true',
@@ -33,6 +31,8 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
+            animation.setSpeed(parseFloat(lottieContainer.getAttribute('data-speed')!));
+
         }).catch((e) => {
             console.log('error fetching lottie file', e);
         });
@@ -40,7 +40,7 @@ window.addEventListener('DOMContentLoaded', () => {
         // rlottieWorker.postMessage({
         //     type: 'initializeLottie',
         //     params: {
-        //         speed: parseFloat(lottieContainer.getAttribute('data-speed')!),
+        //         speed: ,
         //         tgs: ,
         //         width: lottieContainer.children[0].getAttribute('width'),
         //         height: lottieContainer.children[0].getAttribute('height'),

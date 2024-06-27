@@ -27,7 +27,7 @@ export default defineConfig((config) => {
       rollupOptions: {
         output: {
           manualChunks: {
-            lottie: ['lottie-web', 'pako'],
+            lottie: ['lottie-web/build/player/lottie_light', 'pako'],
           }
         }
       }
