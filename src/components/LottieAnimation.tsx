@@ -5,6 +5,7 @@ interface LottieAnimationProps {
     height?: number;
     speed?: number;
     loop?: boolean;
+    renderer?: 'svg' | 'canvas' | 'html';
 };
 
 // Hint: This component is not reactive due to destructuring, nor does it need to be
@@ -14,12 +15,18 @@ const LottieAnimation = ({
     width = 320,
     height = 320,
     speed = 1,
-    loop = true
+    loop = true,
+    renderer = 'svg',
 }: LottieAnimationProps) => {
     return (
-        <div data-lottie={lottie} data-tgs={tgs} data-speed={speed} data-loop={loop} data-lottie-id={Math.random().toString(36).substring(2, 8)}>
-            <canvas width={width} height={height}></canvas>
-        </div>
+        <div
+            data-lottie={lottie}
+            data-tgs={tgs}
+            data-speed={speed}
+            data-loop={loop}
+            data-width={width}
+            data-height={height}
+            data-renderer={renderer}></div>
     );
 };
 

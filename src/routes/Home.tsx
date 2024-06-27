@@ -7,18 +7,13 @@ import { Locale, fetchDictionary, localeDirections, localeFlags, locales } from 
 import { Navigator, useNavigate, useParams } from '@solidjs/router';
 import { TranslationProvider, useTranslation } from "../contexts/TranslationContext.ts";
 
-import { DotLottieSolid } from '@lottiefiles/dotlottie-solid';
 import { FiGlobe } from 'solid-icons/fi'
 import HorizontalRule from '../components/HorizontalRule.tsx';
-// import LottieAnimation from '../components/LottieAnimation';
+import LottieAnimation from '../components/LottieAnimation';
 import { SolidTyper } from "solid-typer";
 import TKSelect from '../components/TKSelect';
 import TonkeeperLogo from '../assets/svg/tonkeeper.svg';
 import { dict as en_dict } from "../i18n/en.ts";
-
-// import * as lottie from 'lottie-web';
-
-
 
 // console.log(LottieAnimation);
 
@@ -57,7 +52,7 @@ const Header = (props: { navigate: Navigator }) => {
                             props.navigate(lang == 'en' ? '/' : `/${lang}`, { replace: true });
                             setLocale(lang);
                             setlangSelectValue(lang);
-                            document.querySelector('html')?.setAttribute('dir', localeDirections[lang as Locale])
+                            document.querySelector('html')?.setAttribute('dir', localeDirections[lang as Locale] ?? 'ltr')
                         }}
                     />
                 </div>
@@ -79,8 +74,9 @@ const Header = (props: { navigate: Navigator }) => {
                         <p>{t('home.description')}</p>
                     </div>
 
-                    <div>
-                        <DotLottieSolid src='/ruby-badge.json' loop autoplay />
+                    <div style={{ display: 'flex', "flex-direction": 'column' }}>
+                        <LottieAnimation lottie='assets/tgs/ruby-badge.tgs' renderer='svg' />
+                        <LottieAnimation lottie='assets/tgs/ruby-badge.tgs' renderer='canvas' />
                     </div>
                 </div>
             </div>
@@ -154,7 +150,7 @@ const Home: Component = () => {
         initialValue: i18n.flatten(en_dict),
     });
 
-    document.querySelector('html')?.setAttribute('dir', localeDirections[lang as Locale])
+    document.querySelector('html')?.setAttribute('dir', localeDirections[lang as Locale] ?? 'ltr')
 
     dict();
 

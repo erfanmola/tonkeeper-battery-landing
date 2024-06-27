@@ -23,5 +23,14 @@ export default defineConfig((config) => {
         defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
       }) : '',
     ],
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            lottie: ['lottie-web', 'pako'],
+          }
+        }
+      }
+    }
   } as UserConfig
 })
