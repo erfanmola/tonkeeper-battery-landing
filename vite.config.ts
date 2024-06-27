@@ -2,6 +2,7 @@ import { UserConfig, defineConfig } from 'vite'
 
 import pluginPurgeCss from "@mojojoejo/vite-plugin-purgecss";
 import solid from 'vite-plugin-solid'
+import solidSvg from 'vite-plugin-solid-svg'
 
 export default defineConfig((config) => {
   const isProduction = config.mode === 'development' ? false : true;
@@ -9,6 +10,7 @@ export default defineConfig((config) => {
   return {
     plugins: [
       solid(),
+      solidSvg(),
       isProduction ? pluginPurgeCss({
         variables: true,
         keyframes: true,

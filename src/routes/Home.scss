@@ -16,24 +16,90 @@
 
 #main-header {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3rem;
+    flex-direction: column;
     padding-top: 2rem;
+    gap: 1rem;
+    width: 100%;
 
-    > nav {
-        > ul {
-            display: flex;
-            gap: 3rem;
+    > #main-header-menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 3rem;
 
-            > li {
-                opacity: 0.75;
-                transition: opacity 0.25s;
+        > nav {
+            > ul {
+                display: flex;
+                gap: 3rem;
 
-                &:hover {
-                    opacity: 0.875;
+                > li {
+                    opacity: 0.75;
+                    transition: opacity 0.25s;
+
+                    &:hover {
+                        opacity: 0.875;
+                    }
                 }
             }
+        }
+    }
+
+    > #main-header-hero {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2rem;
+        padding: 5rem 0 2rem;
+
+        > div:first-child {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
+            > div {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+
+                > h1 {
+                    line-height: normal;
+                    font-size: 3rem;
+                    font-weight: 700;
+                }
+
+                > svg {
+                    height: 4rem;
+                    width: auto;
+                }
+            }
+
+            > span.header-auto-typer {
+                color: var(--accentBlue);
+                font-size: 2.5rem;
+                font-weight: 700;
+
+                > span {
+                    @keyframes blink {
+                        50% {
+                            opacity: 0;
+                        }
+                    }
+
+                    animation: blink 1.25s infinite step-start;
+                }
+            }
+
+            > p {
+                color: var(--textSecondary);
+                font-weight: 400;
+                font-size: 1.125rem;
+                line-height: 1.625;
+            }
+        }
+
+        > div:last-child {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     }
 }

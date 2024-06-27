@@ -1,5 +1,4 @@
 import './app.scss';
-import './rlottie/rlottie';
 
 import { Route, Router } from '@solidjs/router';
 
@@ -7,6 +6,9 @@ import Home from './routes/Home';
 import { locales } from './locale';
 /* @refresh reload */
 import { render } from 'solid-js/web';
+// import './rlottie/rlottie';
+
+
 
 const root = document.getElementById('root');
 

@@ -9,13 +9,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@lottiefiles/dotlottie-solid": "^0.0.2",
     "@solid-primitives/i18n": "^2.1.1",
     "@solidjs/router": "^0.13.6",
     "animate.css": "^4.1.1",
     "lottie-web": "^5.12.2",
     "pako": "^2.1.0",
     "solid-icons": "^1.1.0",
-    "solid-js": "^1.8.17"
+    "solid-js": "^1.8.17",
+    "solid-typer": "^0.0.3",
+    "vite-plugin-solid-svg": "^0.8.1"
   },
   "devDependencies": {
     "@mojojoejo/vite-plugin-purgecss": "^1.1.0",
