@@ -9,12 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@lottiefiles/dotlottie-solid": "^0.0.2",
     "@solid-primitives/i18n": "^2.1.1",
     "@solidjs/router": "^0.13.6",
     "animate.css": "^4.1.1",
     "lottie-web": "^5.12.2",
     "pako": "^2.1.0",
+    "solid-collapse": "^1.1.0",
     "solid-icons": "^1.1.0",
     "solid-js": "^1.8.17",
     "solid-typer": "^0.0.3",
@@ -27,7 +27,6 @@
     "sass": "^1.77.6",
     "typescript": "^5.5.2",
     "vite": "^5.3.1",
-    "vite-plugin-solid": "^2.10.2",
-    "vite-plugin-wasm": "^3.3.0"
+    "vite-plugin-solid": "^2.10.2"
   }
 }

@@ -18,7 +18,7 @@ export default defineConfig((config) => {
           './src/**/*.tsx',
         ],
         safelist: [
-          // ':root',
+          ':root',
         ],
         defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
       }) : '',
