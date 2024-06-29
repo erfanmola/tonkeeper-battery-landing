@@ -1,5 +1,4 @@
 import './app.scss';
-// import './rlottie/rlottie';
 import './lottie';
 
 import { Route, Router } from '@solidjs/router';
