@@ -3,7 +3,7 @@ import { Accessor, createContext, useContext } from 'solid-js';
 import { Locale } from '../locale';
 
 type TranslationContextType = {
-    t: (key: any) => any;
+    t: (key: any, params?: any) => any;
     locale: Accessor<Locale>;
     setLocale: (key: any) => void;
 };

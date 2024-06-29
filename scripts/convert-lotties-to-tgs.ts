@@ -10,7 +10,7 @@ const convertLottiesToTGS = () => {
     const lottieFiles = fs.readdirSync(inputPath);
 
     lottieFiles.forEach((lottieFile) => {
-        const lottie = fs.readFileSync(`${inputPath}/${lottieFile}`).buffer;
+        const lottie = JSON.stringify(JSON.parse(fs.readFileSync(`${inputPath}/${lottieFile}`).toString()));
         const tgs = Pako.deflate(lottie);
         fs.writeFileSync(`${outputPath}/${lottieFile.replace('.json', '.tgs')}`, tgs);
         console.log(`Written ${outputPath}/${lottieFile.replace('.json', '.tgs')}`);

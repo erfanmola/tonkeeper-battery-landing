@@ -14,6 +14,7 @@ const LottieAnimation = ({
 }: LottieAnimationProps) => {
     return (
         <div
+            data-lottie-id={Math.random().toString(36).substring(2, 8)}
             data-lottie={lottie}
             data-tgs={tgs}
             data-speed={speed}
