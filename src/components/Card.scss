@@ -1,0 +1,13 @@
+.tk-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 1.25rem;
+    border: 1px solid var(--borderPrimary);
+    background-color: var(--backgroundContent);
+    padding: 1.5rem;
+    -webkit-scroll-snap-align: center;
+    -moz-scroll-snap-align: center;
+    -ms-scroll-snap-align: center;
+    scroll-snap-align: center;
+}
