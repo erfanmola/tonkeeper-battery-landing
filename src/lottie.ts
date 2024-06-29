@@ -1,8 +1,34 @@
-import lottie, { RendererType } from 'lottie-web/build/player/lottie_light';
+import lottie, { AnimationItem, RendererType } from 'lottie-web/build/player/lottie_light';
 
 import { inflate } from 'pako';
 
 window.addEventListener('DOMContentLoaded', () => {
+
+    const animations: { [key: string]: AnimationItem } = {};
+
+    const callback: IntersectionObserverCallback = (entries, observer) => {
+        entries.forEach((entry) => {
+            const lottieContainer = entry.target;
+            const animationId = lottieContainer.getAttribute('data-lottie-id')!;
+            const animation = animations[animationId]!;
+
+            if (entry.isIntersecting) {
+                animation.play();
+
+                if (lottieContainer.getAttribute('data-loop') != 'true') {
+                    observer.unobserve(lottieContainer);
+                }
+            } else {
+                animation.pause();
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver(callback, {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.25,
+    });
 
     document.querySelectorAll('div[data-lottie]').forEach(async (lottieContainer) => {
 
@@ -19,32 +45,25 @@ window.addEventListener('DOMContentLoaded', () => {
 
             file = JSON.parse(file);
 
-            const animation = lottie.loadAnimation({
+            const animationId = lottieContainer.getAttribute('data-lottie-id')!;
+
+            animations[animationId] = lottie.loadAnimation({
                 container: lottieContainer,
                 renderer: lottieContainer.getAttribute('data-renderer')! as RendererType,
                 loop: lottieContainer.getAttribute('data-loop') == 'true',
-                autoplay: true,
+                autoplay: false,
                 animationData: file,
                 rendererSettings: {
                     focusable: false,
-                    preserveAspectRatio: 'xMidYMid meet',
                 }
             });
 
-            animation.setSpeed(parseFloat(lottieContainer.getAttribute('data-speed')!));
+            animations[animationId].setSpeed(parseFloat(lottieContainer.getAttribute('data-speed')!));
+
+            observer.observe(lottieContainer);
 
         }).catch((e) => {
-            console.log('error fetching lottie file', e);
+            console.error('error fetching lottie file', e);
         });
-
-        // rlottieWorker.postMessage({
-        //     type: 'initializeLottie',
-        //     params: {
-        //         speed: ,
-        //         tgs: ,
-        //         width: lottieContainer.children[0].getAttribute('width'),
-        //         height: lottieContainer.children[0].getAttribute('height'),
-        //     },
-        // });
     });
 });
