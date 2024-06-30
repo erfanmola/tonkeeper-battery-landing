@@ -85,10 +85,21 @@ const dict = {
                 crypto: {
                     title: 'Kripto',
                     description: 'Anda dapat mengisi ulang baterai dengan TON atau stablecoin seperti USDT',
+                    symbol: {
+                        USDT: 'Isi ulang dengan USDT',
+                        TON: 'Isi ulang dengan TON',
+                    },
                 },
                 inAppPurchase: {
                     title: 'Pembelian Dalam Aplikasi',
                     description: 'Anda dapat mengisi ulang baterai melalui Pembelian Dalam Aplikasi',
+                    symbol: {
+                        title: 'Apple Pay',
+                        cancel: 'Batal',
+                        product: 'Paket Kecil',
+                        description: 'Tonkeeper - Dompet TON',
+                        confirm: 'Konfirmasi dengan Tombol Samping',
+                    },
                 },
                 wallet: {
                     title: 'Dompet',

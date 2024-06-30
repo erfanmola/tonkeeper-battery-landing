@@ -190,12 +190,12 @@ const Recharge = () => {
                             <div id='container-recharge-crypto'>
                                 <div>
                                     <USDTLogo />
-                                    <span>Recharge with USDT</span>
+                                    <span>{t('home.recharge.items.crypto.symbol.USDT')}</span>
                                 </div>
 
                                 <div>
                                     <TonLogo />
-                                    <span>Recharge with TON</span>
+                                    <span>{t('home.recharge.items.crypto.symbol.TON')}</span>
                                 </div>
                             </div>
 
@@ -209,8 +209,8 @@ const Recharge = () => {
                             <div id='container-recharge-in-app-purchase'>
                                 <div>
                                     <div>
-                                        <b>Apple Pay</b>
-                                        <span>Cancel</span>
+                                        <b>{t('home.recharge.items.inAppPurchase.symbol.title')}</b>
+                                        <span>{t('home.recharge.items.inAppPurchase.symbol.cancel')}</span>
                                     </div>
 
                                     <div>
@@ -219,8 +219,8 @@ const Recharge = () => {
                                         </div>
 
                                         <div>
-                                            <b>Small Pack</b>
-                                            <span>Tonkeeper - TON Wallet</span>
+                                            <b>{t('home.recharge.items.inAppPurchase.symbol.product')}</b>
+                                            <span>{t('home.recharge.items.inAppPurchase.symbol.description')}</span>
                                         </div>
                                     </div>
 
@@ -228,7 +228,7 @@ const Recharge = () => {
 
                                     <div>
                                         <AppleConfirm />
-                                        <span>Confirm with Side Button</span>
+                                        <span>{t('home.recharge.items.inAppPurchase.symbol.confirm')}</span>
                                     </div>
                                 </div>
                             </div>

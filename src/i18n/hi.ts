@@ -85,10 +85,21 @@ const dict = {
                 crypto: {
                     title: 'क्रिप्टो',
                     description: 'आप TON या स्थिर मुद्राओं जैसे USDT के साथ बैटरी को चार्ज कर सकते हैं',
+                    symbol: {
+                        USDT: 'USDT से रिचार्ज करें',
+                        TON: 'TON से रिचार्ज करें',
+                    },
                 },
                 inAppPurchase: {
                     title: 'इन-ऐप खरीदारी',
                     description: 'आप इन-ऐप खरीदारी के माध्यम से बैटरी को चार्ज कर सकते हैं',
+                    symbol: {
+                        title: 'Apple Pay',
+                        cancel: 'रद्द करें',
+                        product: 'छोटा पैक',
+                        description: 'Tonkeeper - TON वॉलेट',
+                        confirm: 'साइड बटन के साथ पुष्टि करें',
+                    },
                 },
                 wallet: {
                     title: 'वॉलेट',

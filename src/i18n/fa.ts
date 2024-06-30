@@ -85,10 +85,21 @@ const dict = {
                 crypto: {
                     title: 'ارز دیجیتال',
                     description: 'می‌توانید باتری را با TON یا استیبل‌کوین‌هایی مانند USDT شارژ کنید',
+                    symbol: {
+                        USDT: 'شارژ با USDT',
+                        TON: 'شارژ با TON',
+                    },
                 },
                 inAppPurchase: {
                     title: 'خرید درون‌برنامه‌ای',
                     description: 'می‌توانید باتری را از طریق خرید درون‌برنامه‌ای شارژ کنید',
+                    symbol: {
+                        title: 'Apple Pay',
+                        cancel: 'لغو',
+                        product: 'بسته کوچک',
+                        description: 'Tonkeeper - کیف پول TON',
+                        confirm: 'تأیید با دکمه جانبی',
+                    },
                 },
                 wallet: {
                     title: 'کیف پول',

@@ -85,10 +85,21 @@ const dict = {
                 crypto: {
                     title: '加密货币',
                     description: '您可以用 TON 或稳定币如 USDT 为电池充电',
+                    symbol: {
+                        USDT: '使用 USDT 充值',
+                        TON: '使用 TON 充值',
+                    },
                 },
                 inAppPurchase: {
                     title: '应用内购买',
                     description: '您可以通过应用内购买为电池充电',
+                    symbol: {
+                        title: 'Apple Pay',
+                        cancel: '取消',
+                        product: '小包',
+                        description: 'Tonkeeper - TON 钱包',
+                        confirm: '用侧边按钮确认',
+                    },
                 },
                 wallet: {
                     title: '钱包',
