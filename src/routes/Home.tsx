@@ -104,10 +104,7 @@ const Header = (props: { navigate: Navigator }) => {
                     </div>
 
                     <div style={{ display: 'flex', "flex-direction": 'column' }}>
-                        {/* <LottieAnimation lottie='assets/tgs/Emerald.tgs' /> */}
-
-                        {/* @ts-ignore */}
-
+                        <LottieAnimation lottie='assets/tgs/Sapphire.tgs' />
                     </div>
                 </div>
             </div>
