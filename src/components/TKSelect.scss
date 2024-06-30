@@ -38,8 +38,10 @@
         display: none;
         position: absolute;
         top: 100%;
-        min-width: 100%;
+        width: 100%;
+        min-width: 12rem;
         padding-top: 0.5rem;
+        z-index: 9999;
     }
 
     .tk-select-list {
