@@ -18,7 +18,7 @@ const TKSelect = (props: TKSelectProps) => (
             <div class='tk-select-placeholder'>
                 <span>
                     {props.icon}
-                    {props.placeholder}
+                    <span>{props.placeholder}</span>
                 </span>
 
                 <FaSolidChevronDown size={12} />

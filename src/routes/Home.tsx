@@ -13,6 +13,7 @@ import { TranslationProvider, useTranslation } from "../contexts/TranslationCont
 import AppleConfirm from '../assets/svg/apple-confirm.svg';
 import Battery from '../components/Battery.tsx';
 import Card from '../components/Card.tsx';
+import { CgMenu } from 'solid-icons/cg'
 import { Collapse } from 'solid-collapse';
 import FAQIcon from '../assets/svg/faq.svg';
 import { FiGlobe } from 'solid-icons/fi'
@@ -56,6 +57,10 @@ const Header = (props: { navigate: Navigator }) => {
             <div id='top-fade'></div>
             <div id='main-header'>
                 <div id='main-header-menu'>
+                    <div id='icon-menu-mobile'>
+                        <CgMenu size={28} />
+                    </div>
+
                     <nav>
                         <ul>
                             <li><a href='https://tonkeeper.com/'>{t('home.header.menu.home')}</a></li>

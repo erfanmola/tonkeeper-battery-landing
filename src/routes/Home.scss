@@ -114,7 +114,7 @@
     > div > h3 {
         font-size: 2rem;
         font-weight: 700;
-        padding-top: 1rem;
+        padding-top: 2rem;
     }
 
     > p,
@@ -600,6 +600,8 @@
                         font-size: 1rem;
                         color: var(--textSecondary);
                         padding-bottom: 1rem;
+                        text-align: center;
+                        line-height: 1.625;
                     }
                 }
             }
