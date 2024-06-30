@@ -23,6 +23,8 @@ I have made the two main lotties and borrowed the NOT, NFT, USDT, TON lotties fr
 
 ***Ow I forgot to mention that I have used 🔋 and 🔥 emojis, lets reference them ASAP, thanks to Emoji Inventor!***
 
+I have written the English and Persian version of the translations myself, and used GPT-4 for the rest of the translations, so they might be inaccurate.
+
 ## Technical Stuffs
 
 SolidJS is used as the base framework of the project, aiming the performance and smallest bundle size possible.
