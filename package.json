@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@solid-primitives/i18n": "^2.1.1",
+    "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.13.6",
     "animate.css": "^4.1.1",
     "lottie-web": "^5.12.2",
