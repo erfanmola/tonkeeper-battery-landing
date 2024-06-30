@@ -121,9 +121,10 @@
     > div > p {
         color: var(--textSecondary);
         font-weight: 400;
-        font-size: 1.125rem;
-        line-height: 1.625;
+        font-size: 1.175rem;
+        line-height: 1.75;
         padding-top: 0.625rem;
+        max-width: 75%;
     }
 }
 
@@ -163,6 +164,7 @@
                         color: var(--textSecondary);
                         line-height: 1.625;
                         font-size: 1.075rem;
+                        min-height: 3.5rem;
                     }
                 }
             }
@@ -177,20 +179,59 @@
     }
 }
 
-#section-security {
-    display: grid;
-    grid-template-columns: 3fr 2fr;
+#section-security,
+#section-comparison {
+    > ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1rem;
+        padding: 2rem 0 0;
 
-    > div:first-child {
-        display: flex;
-        flex-direction: column;
-        gap: 0.625rem;
-    }
+        > li {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 1rem;
+            line-height: normal;
 
-    > div:last-child {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+            > svg,
+            > span {
+                height: 4rem;
+                font-size: 4rem;
+                user-select: none;
+            }
+
+            > h4 {
+                font-weight: 700;
+                font-size: 1.425rem;
+            }
+
+            > p {
+                font-size: 1rem;
+                color: var(--textSecondary);
+                line-height: 1.625;
+                max-width: 75%;
+            }
+
+            > ul {
+                display: flex;
+                flex-direction: column;
+                padding: 1rem 0;
+                gap: 0.625rem;
+
+                > li {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.425rem;
+                    color: var(--textSecondary);
+
+                    > svg {
+                        color: var(--accentBlue);
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -284,6 +325,10 @@
             background-color: var(--backgroundPage);
             position: relative;
             z-index: 1;
+
+            > svg {
+                height: 2.5rem;
+            }
 
             > span {
                 font-weight: 700;
@@ -469,15 +514,15 @@
 }
 
 #section-FAQ {
-    display: grid;
-    grid-template-columns: 3fr 2fr;
-    grid-gap: 2rem;
+    > div {
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        grid-gap: 2rem;
+        padding: 2rem 0;
 
-    > div:first-child {
         > ul {
             display: flex;
             flex-direction: column;
-            padding: 2rem 0;
             width: 100%;
             padding-inline-start: 0;
             gap: 1rem;
@@ -487,10 +532,12 @@
                 flex-direction: column;
                 width: 100%;
                 background-color: var(--backgroundContent);
-                padding: 1rem;
+                padding: 0;
                 border-radius: 1rem;
+                overflow: hidden;
 
                 > button {
+                    padding: 1rem;
                     background-color: transparent;
                     border: none;
                     outline: none;
@@ -499,7 +546,6 @@
                     cursor: pointer;
                     font-size: 1rem;
                     font-weight: 700;
-                    padding: 0;
                     margin: 0;
                     align-items: center;
                     justify-content: space-between;
@@ -511,9 +557,8 @@
 
                 > div {
                     > p {
+                        padding: 1rem;
                         font-size: 1rem;
-                        margin-top: 0.75rem;
-                        padding-top: 0.75rem;
                         line-height: 1.75;
                         color: var(--textSecondary);
                         border-top: 1px solid rgba(255, 255, 255, 0.125);
@@ -522,10 +567,111 @@
             }
         }
 
-        > a {
-            color: var(--accentBlue);
-            text-decoration: underline;
-            margin-inline-start: 0.25rem;
+        > div {
+            > a {
+                cursor: pointer;
+
+                > div {
+                    align-items: center;
+                    justify-content: center;
+                    gap: 1rem;
+                    line-height: normal;
+                    cursor: pointer;
+                    transition: background-color 0.15s;
+
+                    &:hover {
+                        background-color: var(--backgroundContentTint);
+                    }
+
+                    > svg {
+                        fill: var(--accentBlue);
+                        width: auto;
+                        height: 5rem;
+                        margin-top: 1rem;
+                    }
+
+                    > h4 {
+                        font-size: 1.125rem;
+                        padding-top: 1rem;
+                        font-weight: 700;
+                    }
+
+                    > p {
+                        font-size: 1rem;
+                        color: var(--textSecondary);
+                        padding-bottom: 1rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#main-footer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 2rem;
+
+    > div:first-child {
+        display: flex;
+        justify-content: space-between;
+        padding: 2rem 0;
+        align-items: center;
+        gap: 6rem;
+
+        > div {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-gap: 5rem;
+
+            > div {
+                > span {
+                    font-size: 1rem;
+                    font-weight: 700;
+                }
+
+                > nav {
+                    > ul {
+                        padding: 1rem 0;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.625rem;
+
+                        > li {
+                            display: flex;
+                            align-items: center;
+                            line-height: normal;
+
+                            > a {
+                                color: var(--textSecondary);
+                                transition: color 0.15s;
+
+                                &:hover,
+                                &:active {
+                                    color: var(--textPrimary);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    > div:last-child {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        padding-bottom: 4rem;
+
+        > span {
+            font-size: 1rem;
+
+            &:last-child {
+                font-weight: 400;
+                color: var(--textSecondary);
+            }
         }
     }
 }

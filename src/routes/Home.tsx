@@ -2,9 +2,11 @@ import './Home.scss';
 
 import * as i18n from "@solid-primitives/i18n";
 
-import { Component, For, Show, createMemo, createResource, createSignal } from 'solid-js';
+import { Component, For, Show, Suspense, createEffect, createMemo, createResource, createSignal } from 'solid-js';
+import { FaSolidCheck, FaSolidXmark } from 'solid-icons/fa'
 import { FaSolidChevronDown, FaSolidChevronUp } from "solid-icons/fa";
 import { Locale, fetchDictionary, localeDirections, localeFlags, locales } from '../locale.ts';
+import { Meta, Title } from '@solidjs/meta';
 import { Navigator, useNavigate, useParams } from '@solidjs/router';
 import { TranslationProvider, useTranslation } from "../contexts/TranslationContext.ts";
 
@@ -12,9 +14,12 @@ import AppleConfirm from '../assets/svg/apple-confirm.svg';
 import Battery from '../components/Battery.tsx';
 import Card from '../components/Card.tsx';
 import { Collapse } from 'solid-collapse';
+import FAQIcon from '../assets/svg/faq.svg';
 import { FiGlobe } from 'solid-icons/fi'
+import GlobeIcon from '../assets/svg/globe.svg';
 import HorizontalRule from '../components/HorizontalRule.tsx';
 import LottieAnimation from '../components/LottieAnimation';
+import SecurityIcon from '../assets/svg/security.svg'
 import { SolidTyper } from "solid-typer";
 import TKSelect from '../components/TKSelect';
 import TonLogo from '../assets/svg/ton.svg';
@@ -34,6 +39,18 @@ const Header = (props: { navigate: Navigator }) => {
 
     const [langSelectValue, setlangSelectValue] = createSignal<string | null>(locale(), { equals: false });
 
+    // Trash library, not reactive
+    const [forceRerenderSolidTyper, setForceRerenderSolidTyper] = createSignal<boolean>(false);
+
+    const typewriterWords = createMemo(() => t('home.header.hero.typewriter'));
+
+    createEffect(() => {
+        if (typewriterWords().length) {
+            setForceRerenderSolidTyper(false);
+            setTimeout(() => setForceRerenderSolidTyper(true));
+        }
+    });
+
     return (
         <>
             <div id='top-fade'></div>
@@ -42,7 +59,7 @@ const Header = (props: { navigate: Navigator }) => {
                     <nav>
                         <ul>
                             <li><a href='https://tonkeeper.com/'>{t('home.header.menu.home')}</a></li>
-                            <li><a href=''>{t('home.header.menu.faq')}</a></li>
+                            <li><a href='#section-FAQ'>{t('home.header.menu.faq')}</a></li>
                             <li><a href='https://t.me/help_tonkeeper_bot'>{t('home.header.menu.support')}</a></li>
                             <li><a href='https://github.com/tonkeeper'>{t('home.header.menu.github')}</a></li>
                         </ul>
@@ -67,15 +84,17 @@ const Header = (props: { navigate: Navigator }) => {
                             <TonkeeperLogo />
                             <h1>{t('home.header.hero.title')}</h1>
                         </div>
-                        <SolidTyper
-                            className='header-auto-typer'
-                            text={t('home.header.hero.typewriter')}
-                            backspaceSpeed={50}
-                            typingSpeed={75}
-                            loop={true}
-                            cursor={true}
-                            typingPause={5000}
-                        />
+                        <Show when={forceRerenderSolidTyper()}>
+                            <SolidTyper
+                                className='header-auto-typer'
+                                text={typewriterWords()}
+                                backspaceSpeed={50}
+                                typingSpeed={75}
+                                loop={true}
+                                cursor={true}
+                                typingPause={5000}
+                            />
+                        </Show>
                         <p>{t('home.header.hero.description')}</p>
                     </div>
 
@@ -233,14 +252,28 @@ const Recharge = () => {
     );
 };
 
-const Comparison = () => {
+const Security = () => {
     const { t } = useTranslation();
 
     return (
         <>
-            <section class='tk-section'>
-                <h3>{t('home.comparison.title')}</h3>
-                <p>{t('home.comparison.description')}</p>
+            <section class='tk-section' id='section-security'>
+                <h3>{t('home.security.title')}</h3>
+                <p>{t('home.security.description')}</p>
+
+                <ul>
+                    <li>
+                        <GlobeIcon />
+                        <h4>{t('home.security.items.accessible.title')}</h4>
+                        <p>{t('home.security.items.accessible.description')}</p>
+                    </li>
+
+                    <li>
+                        <SecurityIcon />
+                        <h4>{t('home.security.items.security.title')}</h4>
+                        <p>{t('home.security.items.security.description')}</p>
+                    </li>
+                </ul>
             </section>
             <HorizontalRule />
         </>
@@ -289,18 +322,52 @@ const Plans = () => {
     );
 };
 
-const Security = () => {
+const Comparison = () => {
     const { t } = useTranslation();
 
     return (
         <>
-            <section class='tk-section' id='section-security'>
-                <div>
-                    <h3>{t('home.security.title')}</h3>
-                    <p>{t('home.security.description')}</p>
-                </div>
+            <section class='tk-section' id='section-comparison'>
+                <h3>{t('home.comparison.title')}</h3>
+                <p>{t('home.comparison.description')}</p>
 
-                <LottieAnimation lottie='/assets/tgs/Globe.tgs' />
+                <ul>
+                    <li>
+                        <span>🔋</span>
+                        <h4>{t('home.comparison.items.battery.title')}</h4>
+                        <p>{t('home.comparison.items.battery.description')}</p>
+                        <ul>
+                            <li>
+                                <FaSolidCheck />
+                                <span>{t('home.comparison.items.battery.pros')[0]}</span>
+                            </li>
+                            <li>
+                                <FaSolidCheck />
+                                <span>{t('home.comparison.items.battery.pros')[1]}</span>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <span>🔥</span>
+                        <h4>{t('home.comparison.items.w5.title')}</h4>
+                        <p>{t('home.comparison.items.w5.description')}</p>
+                        <ul>
+                            <li>
+                                <FaSolidCheck />
+                                <span>{t('home.comparison.items.w5.pros')[0]}</span>
+                            </li>
+                            <li>
+                                <FaSolidXmark />
+                                <span>{t('home.comparison.items.w5.cons')[0]}</span>
+                            </li>
+                            <li>
+                                <FaSolidXmark />
+                                <span>{t('home.comparison.items.w5.cons')[1]}</span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </section>
             <HorizontalRule />
         </>
@@ -313,9 +380,9 @@ const FAQ = () => {
     return (
         <>
             <section class='tk-section' id='section-FAQ'>
-                <div>
-                    <h3>{t('home.FAQ.title')}</h3>
+                <h3>{t('home.FAQ.title')}</h3>
 
+                <div>
                     <ul>
                         <For each={t('home.FAQ.items')}>
                             {(item) => {
@@ -338,11 +405,15 @@ const FAQ = () => {
                         </For>
                     </ul>
 
-                    <a href='https://tonkeeper.helpscoutdocs.com/'>{t('home.FAQ.note')}</a>
-                </div>
-
-                <div>
-                    <LottieAnimation lottie='/assets/tgs/FAQ.tgs' loop={false} />
+                    <div>
+                        <a href='https://tonkeeper.helpscoutdocs.com/'>
+                            <Card>
+                                <FAQIcon />
+                                <h4>{t('home.FAQ.platform.title')}</h4>
+                                <p>{t('home.FAQ.platform.description')}</p>
+                            </Card>
+                        </a>
+                    </div>
                 </div>
             </section>
             <HorizontalRule />
@@ -351,10 +422,65 @@ const FAQ = () => {
 };
 
 const Footer = () => {
+    const { t } = useTranslation();
     return (
-        <section>
-            Footer
-        </section>
+        <footer id='main-footer'>
+            <div>
+                <div id='main-footer-menu'>
+                    <div>
+                        <span>{t('home.footer.menu.company.title')}</span>
+                        <nav>
+                            <ul>
+                                <li><a href='https://t.me/tonkeeper_news'>{t('home.footer.menu.company.items.news')}</a></li>
+                                <li><a href='https://t.me/tonkeeperdev'>{t('home.footer.menu.company.items.chat')}</a></li>
+                                <li><a href='https://twitter.com/tonkeeper'>{t('home.footer.menu.company.items.twitter')}</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div>
+                        <span>{t('home.footer.menu.resources.title')}</span>
+                        <nav>
+                            <ul>
+                                <li><a href='https://tonkeeper.helpscoutdocs.com/'>{t('home.footer.menu.resources.items.faq')}</a></li>
+                                <li><a href='https://t.me/help_tonkeeper_bot'>{t('home.footer.menu.resources.items.support')}</a></li>
+                                <li><a href='https://t.me/help_tonkeeper_bot'>{t('home.footer.menu.resources.items.suggest')}</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div>
+                        <span>{t('home.footer.menu.developers.title')}</span>
+                        <nav>
+                            <ul>
+                                <li><a href='https://github.com/tonkeeper/wallet-api'>{t('home.footer.menu.developers.items.documentation')}</a></li>
+                                <li><a href='https://t.me/help_tonkeeper_bot'>{t('home.footer.menu.developers.items.bugBounty')}</a></li>
+                                <li><a href='https://github.com/tonkeeper'>{t('home.footer.menu.developers.items.github')}</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div>
+                        <span>{t('home.footer.menu.legal.title')}</span>
+                        <nav>
+                            <ul>
+                                <li><a href='https://tonkeeper.com/terms'>{t('home.footer.menu.legal.items.terms')}</a></li>
+                                <li><a href='https://tonkeeper.com/privacy'>{t('home.footer.menu.legal.items.privacy')}</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <a target="_blank" href="https://ton.app/wallets/tonkeeper">
+                    <img src="https://ton.app/a2/badge/topapp?appName=tonkeeper" alt="Tonkeeper — #1 Wallet in Ton App" loading="lazy" />
+                </a>
+            </div>
+
+            <div>
+                <span>{t('home.footer.copyright.primary')}</span>
+                <span>{t('home.footer.copyright.secondary')}</span>
+            </div>
+        </footer>
     );
 };
 
@@ -375,16 +501,23 @@ const Home: Component = () => {
     const t = i18n.translator(dict);
 
     return (
-        <TranslationProvider value={{ t, locale, setLocale }}>
-            <Header navigate={navigate} />
-            <IntegratedTransfers />
-            <Recharge />
-            <Security />
-            <Plans />
-            <Comparison />
-            <FAQ />
-            <Footer />
-        </TranslationProvider>
+        <Suspense>
+            <Show when={dict()}>
+                <Title>{t('home.title')}</Title>
+                <Meta name="description" content={t('home.description')} />
+
+                <TranslationProvider value={{ t, locale, setLocale }}>
+                    <Header navigate={navigate} />
+                    <IntegratedTransfers />
+                    <Recharge />
+                    <Security />
+                    <Plans />
+                    <Comparison />
+                    <FAQ />
+                    <Footer />
+                </TranslationProvider>
+            </Show>
+        </Suspense>
     );
 }
 
