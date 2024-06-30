@@ -29,6 +29,7 @@ export default defineConfig((config) => {
         manifest: {
           name: 'Tonkeeper Battery',
           theme_color: '#10161F',
+          background_color: '#10161F',
         },
         injectRegister: 'auto',
         includeManifestIcons: false,
