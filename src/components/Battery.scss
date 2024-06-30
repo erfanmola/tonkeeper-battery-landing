@@ -17,6 +17,16 @@
         content: "";
     }
 
+    &.observed {
+        .acid-container {
+            .acid {
+                .fill {
+                    height: var(--acid-height);
+                }
+            }
+        }
+    }
+
     .acid-container {
         overflow: hidden;
         height: calc(100% - 0.5rem);
@@ -31,10 +41,9 @@
 
             .fill {
                 background: var(--accentBlue);
-                height: var(--acid-height);
+                height: 0;
                 width: 100%;
                 flex-shrink: 0;
-
                 transition: height 2s ease-in-out;
             }
 
