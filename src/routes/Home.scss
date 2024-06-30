@@ -482,6 +482,11 @@
                 align-items: center;
                 justify-content: center;
                 gap: 1rem;
+                transition: background-color 0.15s;
+
+                &:hover {
+                    background-color: var(--backgroundContentTint);
+                }
 
                 > h4 {
                     font-size: 1.5rem;
