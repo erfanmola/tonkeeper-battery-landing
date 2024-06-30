@@ -4,8 +4,14 @@ const dict = {
         fa: 'Persian',
         ar: 'Arabic',
         ru: 'Russian',
+        es: 'Spanish',
+        id: 'Indonesian',
+        hi: 'Hindi',
+        zhHans: 'Chinese',
     },
     home: {
+        title: 'Tonkeeper Battery',
+        description: 'Tonkeeper Battery is a feature that pays transactions fees when an account’s TON balance is zero. The Battery covers payments, staking, swaps and more with any tokens and NFTs.',
         header: {
             menu: {
                 home: 'Home',
@@ -48,8 +54,29 @@ const dict = {
             }
         },
         comparison: {
-            title: 'Differences with Gasless',
-            description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat',
+            title: 'Gasless Payments & 🔥 W5',
+            description: 'With Gasless Payments you do not have to charge the Battery, transaction fees are paid directly from the USDT balance.',
+            items: {
+                battery: {
+                    title: 'Battery',
+                    description: 'Tonkeeper Battery is a feature that pays transactions fees when an account’s TON balance is zero. The Battery covers payments, staking, swaps and more with any tokens and NFTs.',
+                    pros: [
+                        'Works with many different kind of assets',
+                        'Works on both W4 and W5 wallets',
+                    ],
+                },
+                w5: {
+                    title: 'W5 Wallet',
+                    description: 'W5 is an open wallet standard developed by Tonkeeper team. In W5 users do not have to charge the Battery, transaction fees are paid directly from the USDT balance.',
+                    pros: [
+                        '2x faster and 1.5x cheaper than in any other wallet',
+                    ],
+                    cons: [
+                        'Limited to only USDT and NOT',
+                        'Requires a W5 wallet',
+                    ],
+                },
+            },
         },
         recharge: {
             title: 'Recharge with ease',
@@ -70,7 +97,7 @@ const dict = {
             }
         },
         plans: {
-            title: 'Plans',
+            title: 'Plans & Pricing',
             description: 'Tonkeeper Battery is denominated in charges, each charge covers the fee of a simple TON transfer transaction. More complex transactions may consume 5, 10 or more charges.',
             charges: (amount: number) => `${amount.toString()} charges`,
             items: {
@@ -86,19 +113,37 @@ const dict = {
             }
         },
         security: {
-            title: 'Privacy & Security',
-            description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat',
+            title: 'Accessible and Protected',
+            description: 'Tonkeeper Battery is an accessible and secure way of paying transaction fees on TON Blockchain, with focusing on the User Experience and ease of access.',
+            items: {
+                accessible: {
+                    title: 'Accessibility',
+                    description: 'Tonkeeper Battery provides an optional and alternative solution for the requirement of TON for transactions on the TON Blockchain by providing you multiple choices for paying your transaction fees.',
+                },
+                security: {
+                    title: 'Security',
+                    description: 'Tonkeeper Battery ensures your privacy and security, with your charges kept safe through top-tier encryption, giving you peace of mind while using all features of your wallet.',
+                },
+            }
         },
         FAQ: {
             title: 'Frequently Asked Questions',
             items: [
                 {
+                    title: 'Have gas fees been removed from Tonkeeper?',
+                    description: 'No. The TON network charges a fee for every transaction, paid in Toncoins. Battery and Gasless are optional features that simplify paying the same fees without using Toncoins.',
+                },
+                {
                     title: 'How does Tonkeepr Battery work?',
                     description: 'Tonkeeper Battery is denominated in charges, each charge covers the fee of a simple TON transfer transaction. More complex transactions may consume 5, 10 or more charges. You can charge the battery with one tap using in-app purchases, with TON, Stablecoins and Notcoin now! Just open the Tonkeeper app, go to Settings, and top up your Battery using TON, USDT, or NOT.',
                 },
                 {
-                    title: 'How can I use it on my wallet?',
+                    title: 'How can I use Battery on my Tonkeeper?',
                     description: 'Update Tonkeeper on iOS and Android to version 4.3, then top up the battery in Settings → Battery. Once charged, the battery status will appear on the main screen.',
+                },
+                {
+                    title: 'How can I use W5 wallet on my Tonkeeper?',
+                    description: 'Update Tonkeeper on iOS and Android to version 4.6.1, then tap “USDT” and select “Try W5 Wallet”. Add the “W5” wallet alongside a current wallet and send some USDT to it, now you can pay with USDT and Notcoin without TON!',
                 },
                 {
                     title: 'How can I use USDT for charging the battery?',
@@ -109,7 +154,49 @@ const dict = {
                     description: ' Open the Tonkeeper app, select Settings and top up your Battery. To charge the Battery you need to send at least 300 Notcoins. You can charge it up more and swap NOT for TON or USDT without buying TON on the exchange',
                 },
             ],
-            note: "Can't find your answer? View our full FAQ",
+            platform: {
+                title: 'Tonkeeper FAQ Platform',
+                description: "Can't find your answer? Visit our Help Center.",
+            }
+        },
+        footer: {
+            menu: {
+                company: {
+                    title: 'Company',
+                    items: {
+                        news: 'News',
+                        chat: 'Chat',
+                        twitter: 'Twitter',
+                    },
+                },
+                resources: {
+                    title: 'Resources',
+                    items: {
+                        faq: 'FAQ',
+                        support: 'Support',
+                        suggest: 'Suggest a Feature',
+                    },
+                },
+                developers: {
+                    title: 'Developers',
+                    items: {
+                        documentation: 'Documentation',
+                        bugBounty: 'Bug Bounty',
+                        github: 'GitHub',
+                    },
+                },
+                legal: {
+                    title: 'Legal',
+                    items: {
+                        terms: 'Terms',
+                        privacy: 'Privacy',
+                    },
+                },
+            },
+            copyright: {
+                primary: `© ${new Date().getFullYear()} Tonkeeper. All rights reserved.`,
+                secondary: 'All trademarks are the property of their respective owners.',
+            },
         },
     }
 };
