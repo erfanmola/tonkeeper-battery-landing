@@ -19,6 +19,7 @@
     "solid-icons": "^1.1.0",
     "solid-js": "^1.8.17",
     "solid-typer": "^0.0.3",
+    "vite-plugin-pwa": "^0.20.0",
     "vite-plugin-solid-svg": "^0.8.1"
   },
   "devDependencies": {
@@ -28,6 +29,7 @@
     "sass": "^1.77.6",
     "typescript": "^5.5.2",
     "vite": "^5.3.1",
+    "vite-plugin-preload": "^0.4.0",
     "vite-plugin-solid": "^2.10.2"
   }
 }
