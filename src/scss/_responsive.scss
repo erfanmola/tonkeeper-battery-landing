@@ -5,6 +5,10 @@
 }
 
 @media only screen and (max-width: 768px) {
+    #root {
+        overflow-x: hidden;
+    }
+
     html:dir(ltr),
     body:dir(ltr) {
         #main-header-menu {
@@ -160,6 +164,7 @@
                         > div {
                             > div {
                                 height: 3rem !important;
+                                width: 3rem !important;
                             }
 
                             > h4 {
