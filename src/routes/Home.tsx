@@ -2,6 +2,7 @@ import './Home.scss';
 
 import * as i18n from "@solid-primitives/i18n";
 
+import { AnimationProvider, useAnimation } from '../contexts/AnimationContext.ts';
 import { Component, For, Show, Suspense, createEffect, createMemo, createResource, createSignal } from 'solid-js';
 import { FaSolidCheck, FaSolidXmark } from 'solid-icons/fa'
 import { FaSolidChevronDown, FaSolidChevronUp } from "solid-icons/fa";
@@ -26,6 +27,7 @@ import TKSelect from '../components/TKSelect';
 import TonLogo from '../assets/svg/ton.svg';
 import TonkeeperLogo from '../assets/svg/tonkeeper.svg';
 import USDTLogo from '../assets/svg/usdt.svg';
+import { createIntersectionObserver } from '@solid-primitives/intersection-observer';
 import { dict as en_dict } from "../i18n/en.ts";
 
 const Header = (props: { navigate: Navigator }) => {
@@ -115,6 +117,7 @@ const Header = (props: { navigate: Navigator }) => {
 
 const IntegratedTransfers = () => {
     const { t } = useTranslation();
+    const { setAnimationTargets } = useAnimation();
 
     return (
         <>
@@ -128,7 +131,7 @@ const IntegratedTransfers = () => {
                             <Card>
                                 <div>
                                     <LottieAnimation lottie='/assets/tgs/NOT.tgs' loop={false} />
-                                    <h4>{t('home.integratedTransfers.items.NOT.title')}</h4>
+                                    <h4 ref={el => setAnimationTargets((p: any) => [...p, el])} data-animation='fadeInUp'>{t('home.integratedTransfers.items.NOT.title')}</h4>
                                 </div>
                                 <p>{t('home.integratedTransfers.items.NOT.subtitle')}</p>
                             </Card>
@@ -138,7 +141,7 @@ const IntegratedTransfers = () => {
                             <Card>
                                 <div>
                                     <LottieAnimation lottie='/assets/tgs/NFT.tgs' loop={false} />
-                                    <h4>{t('home.integratedTransfers.items.NFT.title')}</h4>
+                                    <h4 ref={el => setAnimationTargets((p: any) => [...p, el])} data-animation='fadeInUp'>{t('home.integratedTransfers.items.NFT.title')}</h4>
                                 </div>
                                 <p>{t('home.integratedTransfers.items.NFT.subtitle')}</p>
                             </Card>
@@ -148,7 +151,7 @@ const IntegratedTransfers = () => {
                             <Card>
                                 <div>
                                     <LottieAnimation lottie='/assets/tgs/USDT.tgs' loop={false} />
-                                    <h4>{t('home.integratedTransfers.items.USDT.title')}</h4>
+                                    <h4 ref={el => setAnimationTargets((p: any) => [...p, el])} data-animation='fadeInUp'>{t('home.integratedTransfers.items.USDT.title')}</h4>
                                 </div>
                                 <p>{t('home.integratedTransfers.items.USDT.subtitle')}</p>
                             </Card>
@@ -158,7 +161,7 @@ const IntegratedTransfers = () => {
                             <Card>
                                 <div>
                                     <LottieAnimation lottie='/assets/tgs/TON.tgs' loop={false} />
-                                    <h4>{t('home.integratedTransfers.items.TON.title')}</h4>
+                                    <h4 ref={el => setAnimationTargets((p: any) => [...p, el])} data-animation='fadeInUp'>{t('home.integratedTransfers.items.TON.title')}</h4>
                                 </div>
                                 <p>{t('home.integratedTransfers.items.TON.subtitle')}</p>
                             </Card>
@@ -177,6 +180,8 @@ const IntegratedTransfers = () => {
 
 const Recharge = () => {
     const { t } = useTranslation();
+
+    const { setAnimationTargets } = useAnimation();
 
     return (
         <>
@@ -199,8 +204,8 @@ const Recharge = () => {
                                 </div>
                             </div>
 
-                            <h4>{t('home.recharge.items.crypto.title')}</h4>
-                            <p>{t('home.recharge.items.crypto.description')}</p>
+                            <h4 ref={el => setAnimationTargets((p: any) => [...p, el])} data-animation='fadeInUp'>{t('home.recharge.items.crypto.title')}</h4>
+                            <p ref={el => setAnimationTargets((p: any) => [...p, el])} data-animation='fadeInUp'>{t('home.recharge.items.crypto.description')}</p>
                         </Card>
                     </li>
 
@@ -233,8 +238,8 @@ const Recharge = () => {
                                 </div>
                             </div>
 
-                            <h4>{t('home.recharge.items.inAppPurchase.title')}</h4>
-                            <p>{t('home.recharge.items.inAppPurchase.description')}</p>
+                            <h4 ref={el => setAnimationTargets((p: any) => [...p, el])} data-animation='fadeInUp'>{t('home.recharge.items.inAppPurchase.title')}</h4>
+                            <p ref={el => setAnimationTargets((p: any) => [...p, el])} data-animation='fadeInUp'>{t('home.recharge.items.inAppPurchase.description')}</p>
                         </Card>
                     </li>
 
@@ -246,8 +251,8 @@ const Recharge = () => {
                                 </div>
                             </div>
 
-                            <h4>{t('home.recharge.items.wallet.title')}</h4>
-                            <p>{t('home.recharge.items.wallet.description')}</p>
+                            <h4 ref={el => setAnimationTargets((p: any) => [...p, el])} data-animation='fadeInUp'>{t('home.recharge.items.wallet.title')}</h4>
+                            <p ref={el => setAnimationTargets((p: any) => [...p, el])} data-animation='fadeInUp'>{t('home.recharge.items.wallet.description')}</p>
                         </Card>
                     </li>
                 </ul>
@@ -259,6 +264,7 @@ const Recharge = () => {
 
 const Security = () => {
     const { t } = useTranslation();
+    const { setAnimationTargets } = useAnimation();
 
     return (
         <>
@@ -269,14 +275,14 @@ const Security = () => {
                 <ul>
                     <li>
                         <GlobeIcon />
-                        <h4>{t('home.security.items.accessible.title')}</h4>
-                        <p>{t('home.security.items.accessible.description')}</p>
+                        <h4 ref={el => setAnimationTargets((p: any) => [...p, el])} data-animation='fadeInUp'>{t('home.security.items.accessible.title')}</h4>
+                        <p ref={el => setAnimationTargets((p: any) => [...p, el])} data-animation='fadeInUp'>{t('home.security.items.accessible.description')}</p>
                     </li>
 
                     <li>
                         <SecurityIcon />
-                        <h4>{t('home.security.items.security.title')}</h4>
-                        <p>{t('home.security.items.security.description')}</p>
+                        <h4 ref={el => setAnimationTargets((p: any) => [...p, el])} data-animation='fadeInUp'>{t('home.security.items.security.title')}</h4>
+                        <p ref={el => setAnimationTargets((p: any) => [...p, el])} data-animation='fadeInUp'>{t('home.security.items.security.description')}</p>
                     </li>
                 </ul>
             </section>
@@ -287,6 +293,7 @@ const Security = () => {
 
 const Plans = () => {
     const { t } = useTranslation();
+    const { setAnimationTargets } = useAnimation();
 
     return (
         <>
@@ -296,7 +303,7 @@ const Plans = () => {
                 <ul>
                     <li>
                         <Card>
-                            <h4>{t('home.plans.items.small.title')}</h4>
+                            <h4 ref={el => setAnimationTargets((p: any) => [...p, el])} data-animation='fadeInUp'>{t('home.plans.items.small.title')}</h4>
                             <Battery percentage={20} />
                             <span>{t('home.plans.charges', 101)}</span>
                             <a href='#'>$6.99</a>
@@ -305,7 +312,7 @@ const Plans = () => {
 
                     <li>
                         <Card>
-                            <h4>{t('home.plans.items.medium.title')}</h4>
+                            <h4 ref={el => setAnimationTargets((p: any) => [...p, el])} data-animation='fadeInUp'>{t('home.plans.items.medium.title')}</h4>
                             <Battery percentage={50} />
                             <span>{t('home.plans.charges', 228)}</span>
                             <a href='#'>$12.99</a>
@@ -314,7 +321,7 @@ const Plans = () => {
 
                     <li>
                         <Card>
-                            <h4>{t('home.plans.items.large.title')}</h4>
+                            <h4 ref={el => setAnimationTargets((p: any) => [...p, el])} data-animation='fadeInUp'>{t('home.plans.items.large.title')}</h4>
                             <Battery percentage={90} />
                             <span>{t('home.plans.charges', 354)}</span>
                             <a href='#'>$19.99</a>
@@ -329,6 +336,7 @@ const Plans = () => {
 
 const Comparison = () => {
     const { t } = useTranslation();
+    const { setAnimationTargets } = useAnimation();
 
     return (
         <>
@@ -338,10 +346,10 @@ const Comparison = () => {
 
                 <ul>
                     <li>
-                        <span>🔋</span>
-                        <h4>{t('home.comparison.items.battery.title')}</h4>
-                        <p>{t('home.comparison.items.battery.description')}</p>
-                        <ul>
+                        <span ref={el => setAnimationTargets((p: any) => [...p, el])} data-animation='fadeInUp'>🔋</span>
+                        <h4 ref={el => setAnimationTargets((p: any) => [...p, el])} data-animation='fadeInUp'>{t('home.comparison.items.battery.title')}</h4>
+                        <p ref={el => setAnimationTargets((p: any) => [...p, el])} data-animation='fadeInUp'>{t('home.comparison.items.battery.description')}</p>
+                        <ul ref={el => setAnimationTargets((p: any) => [...p, el])} data-animation='fadeInUp'>
                             <li>
                                 <FaSolidCheck />
                                 <span>{t('home.comparison.items.battery.pros')[0]}</span>
@@ -354,10 +362,10 @@ const Comparison = () => {
                     </li>
 
                     <li>
-                        <span>🔥</span>
-                        <h4>{t('home.comparison.items.w5.title')}</h4>
-                        <p>{t('home.comparison.items.w5.description')}</p>
-                        <ul>
+                        <span ref={el => setAnimationTargets((p: any) => [...p, el])} data-animation='fadeInUp'>🔥</span>
+                        <h4 ref={el => setAnimationTargets((p: any) => [...p, el])} data-animation='fadeInUp'>{t('home.comparison.items.w5.title')}</h4>
+                        <p ref={el => setAnimationTargets((p: any) => [...p, el])} data-animation='fadeInUp'>{t('home.comparison.items.w5.description')}</p>
+                        <ul ref={el => setAnimationTargets((p: any) => [...p, el])} data-animation='fadeInUp'>
                             <li>
                                 <FaSolidCheck />
                                 <span>{t('home.comparison.items.w5.pros')[0]}</span>
@@ -381,6 +389,7 @@ const Comparison = () => {
 
 const FAQ = () => {
     const { t } = useTranslation();
+    const { setAnimationTargets } = useAnimation();
 
     return (
         <>
@@ -394,7 +403,7 @@ const FAQ = () => {
                                 const [isExpanded, setIsExpanded] = createSignal(false);
 
                                 return (
-                                    <li>
+                                    <li ref={el => setAnimationTargets((p: any) => [...p, el])} data-animation='fadeInUp'>
                                         <button onClick={() => setIsExpanded(!isExpanded())}>
                                             <span>{item.title}</span>
                                             <Show when={isExpanded()} fallback={<FaSolidChevronDown />}>
@@ -505,22 +514,35 @@ const Home: Component = () => {
 
     const t = i18n.translator(dict);
 
+    const [animationTargets, setAnimationTargets] = createSignal<Element[]>([]);
+
+    createIntersectionObserver(animationTargets, (entries, observer) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                observer.unobserve(e.target);
+                e.target.classList.add('animate__animated', `animate__${e.target.getAttribute('data-animation')}`);
+            }
+        });
+    });
+
     return (
         <Suspense>
             <Show when={dict()}>
                 <Title>{t('home.title')}</Title>
                 <Meta name="description" content={t('home.description')} />
 
-                <TranslationProvider value={{ t, locale, setLocale }}>
-                    <Header navigate={navigate} />
-                    <IntegratedTransfers />
-                    <Recharge />
-                    <Security />
-                    <Plans />
-                    <Comparison />
-                    <FAQ />
-                    <Footer />
-                </TranslationProvider>
+                <AnimationProvider value={{ setAnimationTargets }}>
+                    <TranslationProvider value={{ t, locale, setLocale }}>
+                        <Header navigate={navigate} />
+                        <IntegratedTransfers />
+                        <Recharge />
+                        <Security />
+                        <Plans />
+                        <Comparison />
+                        <FAQ />
+                        <Footer />
+                    </TranslationProvider>
+                </AnimationProvider>
             </Show>
         </Suspense>
     );
